@@ -1,19 +1,17 @@
-package Models;
 
+
+
+package Models;
 
 import java.util.List;
 
 public class Stand {
-
-
     String id;
     private String name;
-
     List<Vote> listOfVotes;
     double averageVote;
 
     public Stand(){
-
     }
 
     public void addVote(Vote vote){
