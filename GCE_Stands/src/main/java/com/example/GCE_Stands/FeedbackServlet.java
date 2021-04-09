@@ -28,13 +28,16 @@ public class FeedbackServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
 
-        System.out.println(email);
-
+        //System.out.println(email);
+        String id = request.getParameter("id");
         if(email != null){
-            String id = request.getParameter("id");
 
             //TODO
-            URL url = new URL("http://data1.hib.no:9090/expo2021_prosjekt13/stand/"+id);
+            String lokalt = "http://localhost:8080/stands//getStand/";
+
+            String api = "http://data1.hib.no:9090/expo2021_api_3/stand/";
+
+            URL url = new URL(api+id);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -52,7 +55,6 @@ public class FeedbackServlet extends HttpServlet {
                 while (sc.hasNext()) {
                     inline += sc.nextLine();
                 }
-                System.out.println(inline);
                 sc.close();
 
                 Stand thisStand = new Gson().fromJson(inline, Stand.class);
@@ -62,7 +64,8 @@ public class FeedbackServlet extends HttpServlet {
 
             request.getRequestDispatcher("WEB-INF/Feedback.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        response.sendRedirect("index.jsp?id="+id);
 
 
 
@@ -82,7 +85,7 @@ public class FeedbackServlet extends HttpServlet {
 
         Vote vote = new Vote(email,absRating);
 
-        URL url = new URL("http://data1.hib.no:9090/expo2021_prosjekt13/vote/"+standID);
+        URL url = new URL("http://data1.hib.no:9090/expo2021_api_3/vote/"+standID);
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -105,7 +108,14 @@ public class FeedbackServlet extends HttpServlet {
             os.write(input, 0, input.length);
         }
 
-        request.getRequestDispatcher("WEB-INF/FeedbackSuccess.html").forward(request, response);
+
+        if(conn.getResponseCode() == 200){
+            request.getRequestDispatcher("WEB-INF/FeedbackSuccess.html").forward(request, response);
+        } else {
+            request.setAttribute("id",standID);
+            response.sendRedirect("feedback");
+        }
+
 
 
 

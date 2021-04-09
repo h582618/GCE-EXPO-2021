@@ -12,10 +12,17 @@ import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 @WebServlet(name = "standsServlet", value = "/standsServlet")
 public class StandsServlet extends HttpServlet {
+
+    List<String> admins = new ArrayList<String>(
+            Arrays.asList("matiasvedeler@gmail.com","andersjohan97@gmail.com","etkarhemit@gmail.com","evensenchristian@gmail.com",
+                    "evensleire97@gmail.com","frede.berdal@gmail.com","maggu898@gmail.com","nichlasloneberg@gmail.com","simon.kobbenes@gmail.com"));
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -23,10 +30,10 @@ public class StandsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
 
-        if (email != null) {
+        if (email != null && admins.contains(email)) {
             String lokalt = "http://localhost:8080/stands/getStands";
 
-            String api = "http://data1.hib.no:9090/expo2021_prosjekt13/show-stands";
+            String api = "http://data1.hib.no:9090/expo2021_api_3/show-stands";
 
             response.setContentType("text/html;charset=UTF-8");
             request.setCharacterEncoding("UTF-8");
@@ -73,5 +80,49 @@ public class StandsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+        String deleteAll = request.getParameter("DELETEALL");
+
+        String api = "";
+
+        if(deleteAll != null){
+             api = "http://data1.hib.no:9090/expo2021_api_3/delete-all";
+
+
+        } else {
+
+            String id = request.getParameter("id");
+
+            System.out.println(id);
+
+            String lokalt = "http://localhost:8080/stands/getStands";
+
+             api = "http://data1.hib.no:9090/expo2021_api_3/delete/" + id;
+
+        }
+        URL url = new URL(api);
+
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+        conn.setRequestMethod("DELETE");
+
+        conn.setRequestProperty("Content-Type", "application/json; utf-8");
+
+        conn.setRequestProperty("Accept", "application/json");
+
+        conn.setDoOutput(true);
+
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
+        int responsecode = conn.getResponseCode();
+
+        if (responsecode != 200)
+            throw new RuntimeException("HttpResponseCode: " + responsecode);
+        else {
+
+            response.sendRedirect("standsServlet");
+
+        }
     }
 }

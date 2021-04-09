@@ -18,11 +18,18 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 
 @WebServlet(name = "UploadServlet", value = "/UploadServlet")
 public class UploadServlet extends HttpServlet {
+    List<String> admins = new ArrayList<String>(
+            Arrays.asList("matiasvedeler@gmail.com","andersjohan97@gmail.com","etkarhemit@gmail.com","evensenchristian@gmail.com",
+                    "evensleire97@gmail.com","frede.berdal@gmail.com","maggu898@gmail.com","nichlasloneberg@gmail.com","simon.kobbenes@gmail.com"));
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -45,10 +52,11 @@ public class UploadServlet extends HttpServlet {
 
     String standName = request.getParameter("standName");
 
-    String lokal =  "http://localhost:8080/stands/addStand";
+    String lokalt =  "http://localhost:8080/stands/addStand";
 
-    String api = "http://data1.hib.no:9090/expo2021_prosjekt13/create-stand";
+    String api = "http://data1.hib.no:9090/expo2021_api_3/create-stand";
 
+        System.out.println(standName);
 
     //TODO
         if(standName != null){
@@ -65,9 +73,9 @@ public class UploadServlet extends HttpServlet {
 
             conn.setDoOutput(true);
 
-            Random random = new Random(100);
+            Random random = new Random();
 
-            String randomId = standName.substring(0,2)+random.nextInt();
+            String randomId = standName.substring(0,2).toUpperCase().replaceAll("\\s+","")+random.nextInt(100);
 
             JsonObject innerObject = new JsonObject();
             innerObject.addProperty("id",randomId);
@@ -79,6 +87,9 @@ public class UploadServlet extends HttpServlet {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
+
+            System.out.println(conn.getResponseCode());
+
         } else  {
 
             StandGenerator standGenerator = new StandGenerator();

@@ -7,11 +7,6 @@
           <option name="CONTEXT_PATH" value="/GCE_Stands_war_exploded" />
         </settings>
       </artifact>
-      <artifact name="GCE_Stands:war">
-        <settings>
-          <option name="CONTEXT_PATH" value="/GCE_Stands_war" />
-        </settings>
-      </artifact>
     </deployment>
     <server-settings>
       <option name="BASE_DIRECTORY_NAME" value="f7b8c96b-ca30-4813-8efb-3e7ce3af0181" />
@@ -89,7 +84,6 @@
       <option name="Make" enabled="true" />
       <option name="BuildArtifacts" enabled="true">
         <artifact name="GCE_Stands:war exploded" />
-        <artifact name="GCE_Stands:war" />
       </option>
     </method>
   </configuration>
