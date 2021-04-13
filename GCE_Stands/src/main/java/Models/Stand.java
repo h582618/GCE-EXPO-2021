@@ -22,6 +22,14 @@ public class Stand {
         averageVote =  listOfVotes.stream().mapToDouble(a -> a.getValue()).average().orElseThrow();
     }
 
+    public int getNumberOfVotes() {
+        return numberOfVotes;
+    }
+
+    public void setNumberOfVotes(int numberOfVotes) {
+        this.numberOfVotes = numberOfVotes;
+    }
+
     public Stand(String id, String name) {
         this.id = id;
         this.name = name;

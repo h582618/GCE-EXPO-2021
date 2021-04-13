@@ -21,16 +21,14 @@
 <c:forEach items="${topAverage}" var="x">
 
 
-             ${x.name} ${x.numberOfVotes}
+             ${x.name} ${x.averageVote}
     <br>
 </c:forEach>
-
 
 <h3> Top Number of votes</h3>
 <c:forEach items="${topNumberOfVotes}" var="x">
 
-
-    ${x.name} ${x.averageVote}
+    ${x.name} ${x.numberOfVotes}
     <br>
 </c:forEach>
 
