@@ -26,7 +26,6 @@ public class StandsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
 
@@ -64,6 +63,7 @@ public class StandsServlet extends HttpServlet {
                     System.out.println(stand.toString());
                 }
 
+                System.out.println(standWrapper.getListOfStands().size());
 
 
                 session.setAttribute("stands", standWrapper.getListOfStands());
@@ -71,6 +71,8 @@ public class StandsServlet extends HttpServlet {
                 response.setContentType("text/html;charset=UTF-8");
 
                 request.getRequestDispatcher("WEB-INF/Stands.jsp").forward(request, response);
+
+                return;
 
             }
         }

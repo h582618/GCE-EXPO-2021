@@ -88,7 +88,7 @@ public class UploadServlet extends HttpServlet {
                 os.write(input, 0, input.length);
             }
 
-            System.out.println(conn.getResponseCode());
+            response.sendRedirect("UploadServlet?standAdded");
 
         } else  {
 

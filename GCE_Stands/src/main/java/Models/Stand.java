@@ -11,6 +11,7 @@ public class Stand {
 
     List<Vote> listOfVotes;
     double averageVote;
+    private int numberOfVotes;
 
     public Stand(){
 

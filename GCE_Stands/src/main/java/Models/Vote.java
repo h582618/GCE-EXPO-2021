@@ -15,6 +15,14 @@ public class Vote {
 
     }
 
+    public String getMailAddress() {
+        return mailAddress;
+    }
+
+    public void setMailAddress(String mailAddress) {
+        this.mailAddress = mailAddress;
+    }
+
     public int getValue() {
         return value;
     }

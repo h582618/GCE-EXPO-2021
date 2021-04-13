@@ -21,7 +21,7 @@
 <c:forEach items="${topAverage}" var="x">
 
 
-             ${x.name} ${x.averageVote}
+             ${x.name} ${x.numberOfVotes}
     <br>
 </c:forEach>
 
