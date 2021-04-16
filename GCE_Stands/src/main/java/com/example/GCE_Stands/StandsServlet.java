@@ -59,13 +59,6 @@ public class StandsServlet extends HttpServlet {
 
                 StandWrapper standWrapper = new Gson().fromJson(inline, StandWrapper.class);
 
-                for(Stand stand : standWrapper.getListOfStands()){
-                    System.out.println(stand.toString());
-                }
-
-                System.out.println(standWrapper.getListOfStands().size());
-
-
                 session.setAttribute("stands", standWrapper.getListOfStands());
 
                 response.setContentType("text/html;charset=UTF-8");

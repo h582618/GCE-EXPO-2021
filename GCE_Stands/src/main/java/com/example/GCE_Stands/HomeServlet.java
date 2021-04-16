@@ -37,7 +37,6 @@ public class HomeServlet extends HttpServlet {
 
         if(email != null) {
             if (admins.contains(email) && (id == null || id == "")) {
-                System.out.println("admin");
                 response.sendRedirect("Admin");
             } else if (id != null && id != "") {
                 response.sendRedirect("feedback?id="+id);
