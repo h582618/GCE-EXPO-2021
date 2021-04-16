@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="1017792445316-fpub8iae9kbdr6c9kvn9p729taasdrv6.apps.googleusercontent.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <br>
@@ -20,26 +21,27 @@
     <h1> GuttaCorp Expo</h1>
 </div>
 <br><br>
-<a href="/expo2021_prosjekt3/standsServlet" class="button"> Stands </a>
+<a href="/expo2021_prosjekt3/standsServlet" class="link"> Stands </a>
 <br><br>
-<a href="/expo2021_prosjekt3/statistics" class="button"> Statistics </a>
+<a href="/expo2021_prosjekt3/statistics" class="link"> Statistics </a>
 
+<br><br>
 <div class="container">
     <H2> Admin Page</H2>
     <br><br>
     <H4> Add stand </H4>
     <form action = "UploadServlet" method = "post">
-        <input type = "text" name = "standName" size = "20" />
-        <input type = "submit" value = "Add stand" />
+        <input type = "text" name = "standName" size = "20" placeholder="name..." required/>
+        <button type="submit"> Add stand</button>
     </form>
-    <br>
+    <br><br>
     <h4> Add stands</h4>
     Upload xlsx file
     <div class="addStands">
         <form action = "UploadServlet" method = "post"
               enctype = "multipart/form-data" accept-charset="UTF-8">
-            <input type = "file" name = "file" style="width:150px"/>
-            <input type = "submit" value = "Upload File" />
+            <input type = "file" name = "file" style="width:50%" required/>
+            <button type="submit">Upload file</button>
         </form>
     </div>
 

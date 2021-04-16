@@ -27,39 +27,35 @@ import java.util.Random;
 @WebServlet(name = "UploadServlet", value = "/UploadServlet")
 public class UploadServlet extends HttpServlet {
     List<String> admins = new ArrayList<String>(
-            Arrays.asList("matiasvedeler@gmail.com","andersjohan97@gmail.com","etkarhemit@gmail.com","evensenchristian@gmail.com",
-                    "evensleire97@gmail.com","frede.berdal@gmail.com","maggu898@gmail.com","nichlasloneberg@gmail.com","simon.kobbenes@gmail.com"));
+            Arrays.asList("matiasvedeler@gmail.com", "andersjohan97@gmail.com", "etkarhemit@gmail.com", "evensenchristian@gmail.com",
+                    "evensleire97@gmail.com", "frede.berdal@gmail.com", "maggu898@gmail.com", "nichlasloneberg@gmail.com", "simon.kobbenes@gmail.com"));
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getParameter("standsAdded") != null) {
             request.setAttribute("responseMsg", "Stands successfully added");
-        } else if(request.getParameter("standAdded") != null){
+        } else if (request.getParameter("standAdded") != null) {
             request.setAttribute("responseMsg", "Stand successfully added");
         }
 
-         request.getRequestDispatcher("WEB-INF/AdminPage.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/AdminPage.jsp").forward(request, response);
 
 
-
-}
-
+    }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    String standName = request.getParameter("standName");
+        String standName = request.getParameter("standName");
 
-    String lokalt =  "http://localhost:8080/stands/addStand";
+        String lokalt = "http://localhost:8080/stands/addStand";
 
-    String api = "http://data1.hib.no:9090/expo2021_api_3/create-stand";
+        String api = "http://data1.hib.no:9090/expo2021_api_3/create-stand";
 
-        System.out.println(standName);
-
-    //TODO
-        if(standName != null){
+        //TODO
+        if (standName != null) {
 
             URL url = new URL(api);
 
@@ -75,22 +71,23 @@ public class UploadServlet extends HttpServlet {
 
             Random random = new Random();
 
-            String randomId = standName.substring(0,2).toUpperCase().replaceAll("\\s+","")+random.nextInt(100);
+            String randomId = standName.substring(0, 2).toUpperCase().replaceAll("\\s+", "") + random.nextInt(100);
 
             JsonObject innerObject = new JsonObject();
-            innerObject.addProperty("id",randomId);
-            innerObject.addProperty("name",standName);
+            innerObject.addProperty("id", randomId);
+            innerObject.addProperty("name", standName);
 
             String jsonInputString = innerObject.toString();//"{ email : " + email +"," +"value :"+ absRating + "}";
 
-            try(OutputStream os = conn.getOutputStream()) {
+            try (OutputStream os = conn.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
+            System.out.println(conn.getResponseCode());
 
             response.sendRedirect("UploadServlet?standAdded");
 
-        } else  {
+        } else {
 
             StandGenerator standGenerator = new StandGenerator();
 
@@ -100,7 +97,6 @@ public class UploadServlet extends HttpServlet {
 
             FileItemIterator iter = upload.getItemIterator(request);
 
-            System.out.println(iter.hasNext());
             if (iter.hasNext()) {
                 FileItemStream item = iter.next();
                 if (item.getName().contains(".xlsx")) {
@@ -109,10 +105,10 @@ public class UploadServlet extends HttpServlet {
                 }
                 response.sendRedirect("UploadServlet?standsAdded");
             }
-                  return;
+
+            return;
         }
 
 
-            
     }
 }

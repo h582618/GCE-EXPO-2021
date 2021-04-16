@@ -13,6 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stands</title>
 </head>
 <body>
@@ -23,30 +24,32 @@
 
 </div>
 <br><br>
-<a href="/expo2021_prosjekt3/Admin" class="button"> Admin page </a>
+<a href="/expo2021_prosjekt3/Admin" class="link"> Admin page </a>
 <br><br>
-<div class="container">
+<div class="container1">
+    <form action="standsServlet" method="post">
+        <input type="hidden" name="DELETEALL" value="DELETEALL"/>
+        <button type="submit">Delete all</button>
+    </form>
     <br><br>
     <div class="tablediv">
         <table>
-            <form action="standsServlet" method="post">
-                <td>
-                    <input type="hidden" name="DELETEALL" value="DELETEALL"/>
-                </td>
-                <td><input style="float: right; margin: auto;" type="submit" value="Delete all"/></td>
-
-            </form>
             <c:forEach items="${stands}" var="x">
                 <form action="QrGenerator" method="get">
                     <input type="hidden" name="qrtext"
                            value="http://data1.hib.no:9090/expo2021_prosjekt3/feedback?id=${x.id}"/>
                     <tr>
-                        <td>  ${x.id} ${x.name}</td>
-                        <td><input type="submit" name="generateQR" value="Generate QR Code"/></td>
+                        <td> ${x.id}</td>
+                        <td> ${x.name}</td>
+                        <td>
+                            <button type="submit" name="generateQR">Generate QR Code</button>
+                        </td>
                 </form>
                 <form action="standsServlet" method="post">
                     <input type="hidden" name="id" value="${x.id}"/>
-                    <td><input type="submit" value="Delete"/></td>
+                    <td>
+                        <button type="submit" class="button">Delete</button>
+                    </td>
 
 
                 </form>

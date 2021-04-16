@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="1017792445316-fpub8iae9kbdr6c9kvn9p729taasdrv6.apps.googleusercontent.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <br>

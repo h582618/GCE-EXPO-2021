@@ -166,21 +166,43 @@ select {
 
 /*---------------------------------------------------*/
 
+@media screen and (min-width: 300px) and (max-width: 600px) {
+    body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        vertical-align: baseline;
 
+    }
 
+    body .container {
+        width: 80%;
+        display: inline-block;
+    }
 
-@media only screen and (max-width: 600px) {
-    body {}
+    body .rate {
+        margin-bottom: 5%;
+    }
+
+    body .rate:not(:checked) > label {
+        font-size: 10vw;
+    }
+
 }
 
 body {
-    background-image: url("https://cdn.wallpapersafari.com/53/75/rL9dcx.jpg");
+    background-image: url("../bilder/Web_Background.png");
     background-position: center;
-    background-repeat: repeat;
+    background-attachment: fixed;
     background-size: cover;
     color: white;
     text-align: center;
     height: 700px;
+}
+
+body form {
+    display: inline-block
 }
 
 * {
@@ -197,49 +219,13 @@ body {
     background: rgba(0, 0, 0, 0.3);
 }
 
-.star-wrapper {
-    direction: rtl;
+.container1 {
+    margin-left: 26.5%;
+    padding: 30px;
+    width: 600px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.3);
 }
-
-.star-wrapper a {
-    font-size: 2em;
-    color: #fff;
-    text-decoration: none;
-    transition: all 0.5s;
-    margin: 4px;
-}
-
-.star-wrapper a:hover {
-    color: gold;
-    transform: scale(1.3);
-}
-
-.s1:hover ~ a {
-    color: gold;
-}
-
-.s2:hover ~ a {
-    color: gold;
-}
-
-.s3:hover ~ a {
-    color: gold;
-}
-
-.s4:hover ~ a {
-    color: gold;
-}
-
-.s5:hover ~ a {
-    color: gold;
-}
-
-.wraper {
-    position: absolute;
-    bottom: 30px;
-    right: 50px;
-}
-
 
 .link:link,
 .link:visited {
@@ -289,7 +275,8 @@ h4 {
     font-size: 1.5em;
 }
 
-div {}
+div {
+}
 
 .tablediv {
     text-align: left;
@@ -310,39 +297,46 @@ tr:nth-child(even) {
     background: rgba(999, 9999, 99999, 0.1);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
+
 .rate {
     float: left;
     height: 46px;
     padding: 0 10px;
     margin: 0 auto;
 }
+
 .rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
+    position: absolute;
+    top: -9999px;
 }
+
 .rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
 }
+
 .rate:not(:checked) > label:before {
     content: '★ ';
 }
+
 .rate > input:checked ~ label {
     color: #ffc700;
 }
+
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
     color: #deb217;
 }
+
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
@@ -352,4 +346,5 @@ tr:nth-child(even) {
 }
 
 
-input {}
+input {
+}
