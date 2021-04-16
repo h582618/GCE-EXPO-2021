@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Scanner;
 
 @WebServlet(name = "statistics", value = "/statistics")
-public class StatisticsServlet extends HttpServlet {
+public class StatestikkServlet extends HttpServlet {
     List<String> admins = new ArrayList<String>(
             Arrays.asList("matiasvedeler@gmail.com","andersjohan97@gmail.com","etkarhemit@gmail.com","evensenchristian@gmail.com",
                     "evensleire97@gmail.com","frede.berdal@gmail.com","maggu898@gmail.com","nichlasloneberg@gmail.com","simon.kobbenes@gmail.com"));
@@ -66,7 +66,7 @@ public class StatisticsServlet extends HttpServlet {
                 return;
             }
         }
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 
     @Override

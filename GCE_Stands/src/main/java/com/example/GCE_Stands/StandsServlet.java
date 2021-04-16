@@ -56,7 +56,6 @@ public class StandsServlet extends HttpServlet {
                 }
                 sc.close();
 
-
                 StandWrapper standWrapper = new Gson().fromJson(inline, StandWrapper.class);
 
                 session.setAttribute("stands", standWrapper.getListOfStands());

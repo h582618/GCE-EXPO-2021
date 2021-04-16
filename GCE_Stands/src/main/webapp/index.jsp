@@ -3,11 +3,14 @@
 <html>
 <head>
     <title>GuttaCorp Expo</title>
-    <link href="css/GCE.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="1017792445316-fpub8iae9kbdr6c9kvn9p729taasdrv6.apps.googleusercontent.com">
 </head>
 <body>
+<br>
 <div class="header">
     <h1> GuttaCorp Expo</h1>
 </div>
