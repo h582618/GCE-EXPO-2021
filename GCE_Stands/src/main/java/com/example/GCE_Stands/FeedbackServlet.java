@@ -28,8 +28,14 @@ public class FeedbackServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
 
-        //System.out.println(email);
         String id = request.getParameter("id");
+
+        String rating = request.getParameter("rating");
+
+        if (rating != null && email!=null) {
+
+        }
+
         if(email != null){
 
             //TODO

@@ -27,6 +27,10 @@ public class Stand {
         this.name = name;
     }
 
+    public int getNumberOfVotes() {
+        return numberOfVotes;
+    }
+
     public String getId() {
         return id;
     }

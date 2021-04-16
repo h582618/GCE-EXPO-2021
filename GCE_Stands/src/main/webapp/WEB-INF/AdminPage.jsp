@@ -9,39 +9,47 @@
 <html>
 <head>
     <title>Admin page</title>
-    <link href="css/GCE.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="1017792445316-fpub8iae9kbdr6c9kvn9p729taasdrv6.apps.googleusercontent.com">
 </head>
 <body>
+<br>
 <div class="header">
     <h1> GuttaCorp Expo</h1>
 </div>
-<H2> Admin Page</H2>
+<br><br>
 <a href="/expo2021_prosjekt3/standsServlet" class="button"> Stands </a>
-<br>
-
+<br><br>
 <a href="/expo2021_prosjekt3/statistics" class="button"> Statistics </a>
-<H4> Add stand </H4>
-<div class="addStands">
+
+<div class="container">
+    <H2> Admin Page</H2>
+    <br><br>
+    <H4> Add stand </H4>
     <form action = "UploadServlet" method = "post">
         <input type = "text" name = "standName" size = "20" />
         <input type = "submit" value = "Add stand" />
     </form>
+    <br>
+    <h4> Add stands</h4>
+    Upload xlsx file
+    <div class="addStands">
+        <form action = "UploadServlet" method = "post"
+              enctype = "multipart/form-data" accept-charset="UTF-8">
+            <input type = "file" name = "file" style="width:150px"/>
+            <input type = "submit" value = "Upload File" />
+        </form>
+    </div>
+
+    ${responseMsg}
 </div>
 
-<h4> Add stands</h4>
-Upload xlsx file <br>
+
 <br>
-<div class="addStands">
-    <form action = "UploadServlet" method = "post"
-          enctype = "multipart/form-data" accept-charset="UTF-8">
-        <input type = "file" name = "file" style="width:150px"/>
-        <input type = "submit" value = "Upload File" />
-    </form>
-</div>
+
 <div id="clear">
-    <% System.out.println(request.getSession().getAttribute("email"));%>
 </div>
 <div hidden style="margin: auto;
     width: 120px;"; class="g-signin2" data-onsuccess="onSignIn" id="myP"></div>
@@ -52,6 +60,6 @@ Upload xlsx file <br>
 
     }
 </script>
-${responseMsg}
+
 </body>
 </html>

@@ -63,8 +63,10 @@ public class StatestikkServlet extends HttpServlet {
 
                 request.getRequestDispatcher("WEB-INF/Statistics.jsp").forward(request, response);
 
+                return;
             }
         }
+        request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 
     @Override
